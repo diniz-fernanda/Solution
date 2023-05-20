@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace WebAPI.Migrations
+namespace Infra.Migrations
 {
     /// <inheritdoc />
     public partial class AdicionadoStatusVenda : Migration

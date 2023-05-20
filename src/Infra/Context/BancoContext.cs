@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using WebAPI.Entities;
+﻿using Domain.Model;
+using Microsoft.EntityFrameworkCore;
 
-namespace WebAPI.Persistence
+
+namespace Infra.Context
 {
     public class BancoContext : DbContext
     {

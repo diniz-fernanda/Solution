@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
+﻿using Domain.Interface.Repository;
+using Domain.Model;
+using Infra.Context;
 using Microsoft.AspNetCore.Mvc;
-using WebAPI.Entities;
-using WebAPI.Persistence;
-using WebAPI.Persistence.Repository;
 
-namespace WebAPI.Controllers
+namespace API.WebAPI.Controllers
 {
     [Route("api/carrinho")]
     [ApiController]

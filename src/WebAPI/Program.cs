@@ -1,6 +1,8 @@
+using Domain.Interface.Repository;
+using Infra.Context;
+using Infra.Repository;
 using Microsoft.EntityFrameworkCore;
-using WebAPI.Persistence;
-using WebAPI.Persistence.Repository;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

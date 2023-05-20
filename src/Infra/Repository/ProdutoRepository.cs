@@ -1,7 +1,8 @@
-﻿using WebAPI.Entities;
-using WebAPI.Persistence;
+﻿using Domain.Interface.Repository;
+using Domain.Model;
+using Infra.Context;
 
-namespace WebAPI.Persistence.Repository
+namespace Infra.Repository
 {
     public class ProdutoRepository : IProdutoRepository
     {

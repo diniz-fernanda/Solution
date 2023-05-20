@@ -1,4 +1,4 @@
-﻿namespace WebAPI.Entities.Enums
+﻿namespace Domain.Model.Enums
 {
     public enum StatusVenda
     {

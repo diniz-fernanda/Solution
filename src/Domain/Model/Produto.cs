@@ -1,6 +1,6 @@
-﻿using WebAPI.Entities.Enums;
+﻿using Domain.Model.Enums;
 
-namespace WebAPI.Entities
+namespace Domain.Model
 {
     public class Produto
     {

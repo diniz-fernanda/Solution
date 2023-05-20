@@ -1,4 +1,4 @@
-﻿namespace WebAPI.Entities
+﻿namespace Domain.Model
 {
     public class Carrinho
     {

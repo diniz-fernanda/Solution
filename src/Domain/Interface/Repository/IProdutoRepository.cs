@@ -1,6 +1,7 @@
-﻿using WebAPI.Entities;
+﻿using Domain.Model;
 
-namespace WebAPI.Persistence.Repository
+
+namespace Domain.Interface.Repository
 {
     public interface IProdutoRepository
     {

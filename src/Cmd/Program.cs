@@ -1,7 +1,8 @@
 ﻿using Cmd.API;
+using Domain.Model;
+using Domain.Model.Enums;
 using System.Globalization;
-using WebAPI.Entities;
-using WebAPI.Entities.Enums;
+
 
 string baseUrl = "https://localhost:44355"; 
 
