@@ -1,6 +1,7 @@
 ﻿using Domain.Interface.Repository;
 using Domain.Model;
 using Infra.Context;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.WebAPI.Controllers
@@ -47,7 +48,7 @@ namespace API.WebAPI.Controllers
                 produto
                 );
         }
-        [HttpPut]
+        [HttpPut("{id}")]
         public IActionResult Put(int id, Produto produto)
         {
             var produtoExistente = _produtoRepository.BuscarPorId(id);
@@ -62,7 +63,7 @@ namespace API.WebAPI.Controllers
 
             return NoContent();
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id) 
         {
             var produto = _produtoRepository.BuscarPorId(id);

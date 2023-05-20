@@ -2,7 +2,7 @@
 {
     public enum StatusVenda
     {
-        Sim,
-        Não
+        Sim = 1, 
+        Não = 2
     }
 }

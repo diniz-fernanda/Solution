@@ -1,7 +1,8 @@
 ﻿using Domain.Model;
+using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
-
+using System.Text.Json;
 
 namespace Cmd.API
 {
@@ -30,6 +31,37 @@ namespace Cmd.API
             }
         }
 
+        //public async Task<Produto> BuscarPorId(int id)
+        //{
+        //    HttpResponseMessage resposta = await _httpClient.GetAsync($"api/carrinho/{id}");
+        //    if (resposta.IsSuccessStatusCode)
+        //    {
+        //        return await resposta.Content.ReadFromJsonAsync<Produto>();
+        //    }
+        //    else
+        //    {
+        //        throw new Exception($"Erro ao obter os produtos. Status: {resposta.StatusCode}");
+        //    }
+        //}
+
+        public async Task<Produto> BuscarPorId(int id)
+        {
+            HttpResponseMessage resposta = await _httpClient.GetAsync($"api/carrinho/{id}");
+            if (resposta.IsSuccessStatusCode)
+            {
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+
+                string produto = await resposta.Content.ReadAsStringAsync();
+                return JsonSerializer.Deserialize<Produto>(produto, options);
+            }
+            else
+            {
+                throw new Exception($"Erro ao obter o produto. Status: {resposta.StatusCode}");
+            }
+        }
         public async Task<Produto> Post(Produto produto)
         {
             HttpResponseMessage resposta = await _httpClient.PostAsJsonAsync("api/carrinho", produto);
@@ -43,10 +75,11 @@ namespace Cmd.API
             }
         }
 
-        public async Task<Produto> Atualizar(Produto produto, int id)
+        public async Task<Produto> Atualizar(int id, Produto produtoAtualizado)
         {
-            HttpResponseMessage resposta = await _httpClient.PutAsJsonAsync($"api/carrinho/{id}", produto);
-            if(resposta.IsSuccessStatusCode)
+            HttpResponseMessage resposta = await _httpClient.PutAsJsonAsync($"api/carrinho/{id}", produtoAtualizado);
+
+            if (resposta.IsSuccessStatusCode)
             {
                 return await resposta.Content.ReadFromJsonAsync<Produto>();
             }
@@ -61,5 +94,6 @@ namespace Cmd.API
             HttpResponseMessage resposta = await _httpClient.DeleteAsync($"api/carrinho/{id}");
             return resposta.IsSuccessStatusCode;
         }
+
     }
 }
