@@ -31,19 +31,6 @@ namespace Cmd.API
             }
         }
 
-        //public async Task<Produto> BuscarPorId(int id)
-        //{
-        //    HttpResponseMessage resposta = await _httpClient.GetAsync($"api/carrinho/{id}");
-        //    if (resposta.IsSuccessStatusCode)
-        //    {
-        //        return await resposta.Content.ReadFromJsonAsync<Produto>();
-        //    }
-        //    else
-        //    {
-        //        throw new Exception($"Erro ao obter os produtos. Status: {resposta.StatusCode}");
-        //    }
-        //}
-
         public async Task<Produto> BuscarPorId(int id)
         {
             HttpResponseMessage resposta = await _httpClient.GetAsync($"api/carrinho/{id}");
