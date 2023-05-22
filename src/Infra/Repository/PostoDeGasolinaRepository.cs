@@ -12,9 +12,21 @@ namespace Infra.Repository
             _bancoContext = bancoContext;
         }
 
-        List<PostoDeGasolina> IPostoDeGasolinaRepository.BuscarCarros()
+        public Carro Adicionar(Carro carro)
         {
-            return _bancoContext.PostoDeGasolina.ToList();
+            _bancoContext.Carros.Add(carro);
+            _bancoContext.SaveChanges();
+            return carro;
         }
+        public Carro BuscarPorId(int id)
+        {
+            return _bancoContext.Carros.SingleOrDefault(x => x.Id == id);
+        }
+
+        List<Carro> IPostoDeGasolinaRepository.BuscarCarros()
+        {
+            return _bancoContext.Carros.ToList();
+        }
+
     }
 }

@@ -4,6 +4,9 @@ namespace Domain.Interface.Repository
 {
     public interface IPostoDeGasolinaRepository
     {
-        List<PostoDeGasolina> BuscarCarros();
+        List<Carro> BuscarCarros();
+        Carro Adicionar (Carro carro);
+        Carro BuscarPorId(int id);
+
     }
 }

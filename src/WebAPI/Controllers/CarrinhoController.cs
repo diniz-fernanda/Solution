@@ -12,7 +12,7 @@ namespace API.WebAPI.Controllers
     {
         private readonly IProdutoRepository _produtoRepository;
 
-        public CarrinhoController(IProdutoRepository produtoRepository, BancoContext bancoContext)
+        public CarrinhoController(IProdutoRepository produtoRepository)
         {
             _produtoRepository = produtoRepository;
         }

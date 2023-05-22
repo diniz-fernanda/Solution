@@ -8,6 +8,9 @@ namespace Domain.Model
 {
     public class Carro
     {
+        public Carro()
+        {
+        }
         public Carro(string nomeCarro, int tempoAbastecimento)
         {
             NomeCarro = nomeCarro;

@@ -4,7 +4,7 @@ namespace Domain.Interface.Service
 {
     public interface IPostoDeGasolinaAppService
     {
-         void AdicionarCarroNaFila(Carro carro, PostoDeGasolina posto);
-         List<Carro> AbastecerCarros(PostoDeGasolina posto);
+       // Task AbastecerCarro(Carro carro);
+        Task <List<Carro>> PostoDeGasolina(Carro[] carros);
     }
 }

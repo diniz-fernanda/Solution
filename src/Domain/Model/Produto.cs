@@ -10,11 +10,13 @@ namespace Domain.Model
             Valor = valor;
             Vendido = vendido;
         }
-
+        public Produto()
+        {
+        }
         public int Id { get; private set; }
-        public string Nome { get; private set; }
-        public decimal Valor { get; private set; }
-        public StatusVenda Vendido { get; private set; }
+        public string Nome { get; set; }
+        public decimal Valor { get;  set; }
+        public StatusVenda Vendido { get; set; }
 
         public void Update(string nome, decimal valor, StatusVenda vendido)
         {

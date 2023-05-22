@@ -1,8 +1,9 @@
+using Aplication;
 using Domain.Interface.Repository;
 using Infra.Context;
 using Infra.Repository;
 using Microsoft.EntityFrameworkCore;
-
+using Domain.Interface.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,8 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddScoped<IPostoDeGasolinaRepository, PostoDeGasolinaRepository>();
+builder.Services.AddScoped<IPostoDeGasolinaAppService, PostoDeGasolinaAPPService>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
