@@ -2,7 +2,7 @@
 
 namespace Domain.Interface.Service
 {
-    public interface IPostoDeGasolinaAppService
+    public interface IAppService
     {
         Task <List<Carro>> PostoDeGasolina(Carro[] carros);
     }

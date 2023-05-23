@@ -12,8 +12,8 @@ namespace WebAPI.Controllers
     public class CarroController : ControllerBase
     {
         private readonly ICarroRepository _carroRepository;
-        private readonly IPostoDeGasolinaAppService _postoDeGasolinaAppService;
-        public CarroController(ICarroRepository carroRepository, IPostoDeGasolinaAppService postoDeGasolinaAppService)
+        private readonly IAppService _postoDeGasolinaAppService;
+        public CarroController(ICarroRepository carroRepository, IAppService postoDeGasolinaAppService)
         {
             _carroRepository = carroRepository;
             _postoDeGasolinaAppService = postoDeGasolinaAppService;

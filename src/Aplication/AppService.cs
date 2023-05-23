@@ -4,10 +4,10 @@ using Domain.Model;
 
 namespace Aplication
 {
-    public class PostoDeGasolinaAPPService : IPostoDeGasolinaAppService
+    public class APPService : IAppService
     {
         private readonly ICarroRepository _repository;
-        public PostoDeGasolinaAPPService(ICarroRepository repository) 
+        public APPService(ICarroRepository repository) 
         { 
             _repository = repository; 
         }
