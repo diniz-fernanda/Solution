@@ -46,12 +46,12 @@ namespace WebAPI.Controllers
             {
                 var carrosAbastecidos = await _postoDeGasolinaAppService.PostoDeGasolina(carros);
                 Carro primeiroCarroAbastecido = carrosAbastecidos.FirstOrDefault();
-                carrosAbastecidos.OrderBy(x => x.TempoAbastecimento);
+                var carrosOrdenados = carrosAbastecidos.OrderBy(x => x.TempoAbastecimento).ToList();
 
                 return CreatedAtAction(
                     nameof(GetById),
                     new { id = primeiroCarroAbastecido.Id },
-                    carrosAbastecidos);
+                    carrosOrdenados);
             }
             catch (Exception ex)
             {

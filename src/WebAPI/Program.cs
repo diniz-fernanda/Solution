@@ -27,7 +27,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddScoped<ICarroRepository, CarroRepository>();
-builder.Services.AddScoped<IAppService, PostoDeGasolinaAPPService>();
+builder.Services.AddScoped<IAppService, APPService>();
 builder.Services.AddScoped<IPostoDeGasolinaRepository, PostoDeGasolinaRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

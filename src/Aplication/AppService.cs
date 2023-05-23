@@ -54,7 +54,6 @@ namespace Aplication
                 _repository.Adicionar(carro);
                 
             }
-            carrosAbastecidos.OrderBy(x => x.TempoAbastecimento);
 
             return carrosAbastecidos;
         }
