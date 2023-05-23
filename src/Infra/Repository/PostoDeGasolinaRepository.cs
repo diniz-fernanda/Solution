@@ -12,21 +12,47 @@ namespace Infra.Repository
             _bancoContext = bancoContext;
         }
 
-        public Carro Adicionar(Carro carro)
+        public PostoDeGasolina AdicionarProduto(PostoDeGasolina posto)
         {
-            _bancoContext.Carros.Add(carro);
+            try
+            {
+                _bancoContext.PostoDeGasolina.Add(posto);
+                _bancoContext.SaveChanges();
+                return posto;
+
+            }
+            catch (Exception e)
+            {
+                throw new("Erro ao adicionar o posto.", e);
+
+            }
+        }
+
+        public bool Apagar(int id)
+        {
+            PostoDeGasolina postoDB = BuscarPorIdProduto(id);
+
+            _bancoContext.PostoDeGasolina.Remove(postoDB);
             _bancoContext.SaveChanges();
-            return carro;
-        }
-        public Carro BuscarPorId(int id)
-        {
-            return _bancoContext.Carros.SingleOrDefault(x => x.Id == id);
+            return true;
         }
 
-        List<Carro> IPostoDeGasolinaRepository.BuscarCarros()
+        public PostoDeGasolina Atualizar(PostoDeGasolina posto)
         {
-            return _bancoContext.Carros.ToList();
+            _bancoContext.PostoDeGasolina.Update(posto);
+            _bancoContext.SaveChanges();
+            return posto;
         }
 
+        public PostoDeGasolina BuscarPorIdProduto(int id)
+        {
+            return _bancoContext.PostoDeGasolina.SingleOrDefault(x => x.Id == id);
+
+        }
+
+        public List<PostoDeGasolina> BuscarTodos()
+        {
+            return _bancoContext.PostoDeGasolina.ToList();
+        }
     }
 }

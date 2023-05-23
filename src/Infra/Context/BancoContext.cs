@@ -18,6 +18,10 @@ namespace Infra.Context
         {
             modelBuilder.Entity<Produto>()
                 .HasKey(e => e.Id);
+            modelBuilder.Entity<Carro>()
+                .HasKey(e => e.Id);
+            modelBuilder.Entity<PostoDeGasolina>()
+                .HasKey(e => e.Id);
         }
     }
 }

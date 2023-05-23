@@ -1,4 +1,6 @@
 ﻿using Domain.Model.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Model
 {
@@ -13,6 +15,9 @@ namespace Domain.Model
         public Produto()
         {
         }
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; private set; }
         public string Nome { get; set; }
         public decimal Valor { get;  set; }

@@ -26,8 +26,9 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
-builder.Services.AddScoped<IPostoDeGasolinaRepository, PostoDeGasolinaRepository>();
+builder.Services.AddScoped<ICarroRepository, CarroRepository>();
 builder.Services.AddScoped<IPostoDeGasolinaAppService, PostoDeGasolinaAPPService>();
+builder.Services.AddScoped<IPostoDeGasolinaRepository, PostoDeGasolinaRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

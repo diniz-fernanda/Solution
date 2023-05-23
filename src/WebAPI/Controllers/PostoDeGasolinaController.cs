@@ -1,35 +1,30 @@
 ﻿using Domain.Interface.Repository;
-using Domain.Interface.Service;
 using Domain.Model;
-using Infra.Repository;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/postoDeGasolina")]
     [ApiController]
     public class PostoDeGasolinaController : ControllerBase
     {
         private readonly IPostoDeGasolinaRepository _postoDeGasolinaRepository;
-        private readonly IPostoDeGasolinaAppService _postoDeGasolinaAppService;
-        public PostoDeGasolinaController(IPostoDeGasolinaRepository postoDeGasolinaRepository, IPostoDeGasolinaAppService postoDeGasolinaAppService)
+        public PostoDeGasolinaController(IPostoDeGasolinaRepository postoDeGasolinaRepository)
         {
             _postoDeGasolinaRepository = postoDeGasolinaRepository;
-            _postoDeGasolinaAppService = postoDeGasolinaAppService;
         }
-
         [HttpGet]
         public IActionResult GetAll()
         {
-            var carros = _postoDeGasolinaRepository.BuscarCarros();
+            var produtos = _postoDeGasolinaRepository.BuscarTodos();
 
-            return Ok(carros);
+            return Ok(produtos);
         }
+
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public IActionResult GetByIdPosto(int id)
         {
-            var carro = _postoDeGasolinaRepository.BuscarPorId(id);
+            var carro = _postoDeGasolinaRepository.BuscarPorIdProduto(id);
 
             if (carro == null)
             {
@@ -38,23 +33,52 @@ namespace WebAPI.Controllers
 
             return Ok(carro);
         }
-
         [HttpPost]
-        public async Task<IActionResult> PostoDeGasolina(Carro[] carros)
+        public IActionResult Post(PostoDeGasolina postoDeGasolina)
         {
             try
             {
-                var carrosAbastecidos = await _postoDeGasolinaAppService.PostoDeGasolina(carros);
-                Carro primeiroCarroAbastecido = carrosAbastecidos.SingleOrDefault();
+                _postoDeGasolinaRepository.AdicionarProduto(postoDeGasolina);
+
                 return CreatedAtAction(
-                    nameof(GetById),
-                    new { id = primeiroCarroAbastecido.Id},
-                    carrosAbastecidos);
+                    nameof(GetByIdPosto),
+                    new { id = postoDeGasolina.Id },
+                    postoDeGasolina);
+
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(e.Message);
+
             }
+        }
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, PostoDeGasolina posto)
+        {
+            var postoExistente = _postoDeGasolinaRepository.BuscarPorIdProduto(id);
+
+            if (postoExistente == null)
+            {
+                return NotFound();
+            }
+
+            postoExistente.Update(posto.NomeCombustivel, posto.Preco, posto.Vendido);
+            _postoDeGasolinaRepository.Atualizar(postoExistente);
+
+            return NoContent();
+        }
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var posto = _postoDeGasolinaRepository.BuscarPorIdProduto(id);
+
+            if (posto == null)
+            {
+                return NotFound();
+            }
+
+            _postoDeGasolinaRepository.Apagar(id);
+            return NoContent();
         }
     }
 }
